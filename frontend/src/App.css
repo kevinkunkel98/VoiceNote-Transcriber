@@ -1,0 +1,481 @@
+.app {
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  background: var(--bg-primary);
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* Upload Section - Obsidian Card Style */
+.upload-section {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 2rem;
+  transition: border-color 0.2s ease;
+}
+
+.upload-section:hover {
+  border-color: var(--border-hover);
+}
+
+.drop-zone {
+  border: 2px dashed var(--border-color);
+  border-radius: 6px;
+  padding: 3rem 2rem;
+  text-align: center;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  background: var(--bg-tertiary);
+}
+
+.drop-zone:hover {
+  border-color: var(--accent-purple);
+  background: rgba(139, 92, 246, 0.05);
+}
+
+.drop-zone.active {
+  border-color: var(--accent-purple);
+  background: var(--accent-purple-dim);
+  transform: scale(1.01);
+}
+
+.drop-zone.has-file {
+  border-color: var(--success-color);
+  background: rgba(16, 185, 129, 0.05);
+}
+
+.file-input {
+  display: none;
+}
+
+.file-label {
+  cursor: pointer;
+  display: block;
+}
+
+.upload-icon {
+  margin-bottom: 1rem;
+  opacity: 0.5;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: center;
+}
+
+.file-icon {
+  margin-bottom: 1rem;
+  color: var(--success-color);
+  display: flex;
+  justify-content: center;
+}
+
+.upload-text {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.upload-text strong {
+  color: var(--accent-purple);
+  font-weight: 500;
+}
+
+.upload-hint {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  margin-top: 0.5rem;
+}
+
+.file-name {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.file-size {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.error-message {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid var(--error-color);
+  color: #fca5a5;
+  padding: 0.875rem 1rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 0.875rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: white;
+  background: var(--accent-purple);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.submit-button:hover:not(:disabled) {
+  background: var(--accent-purple-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
+.submit-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.submit-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Result Section - Obsidian Style */
+.result-section {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 2rem;
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.result-header h2 {
+  color: var(--text-primary);
+  font-size: 1.75rem;
+  font-weight: 600;
+  flex: 1;
+  min-width: 250px;
+  letter-spacing: -0.3px;
+}
+
+.result-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.download-button,
+.reset-button {
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.download-button {
+  background: var(--success-color);
+  border-color: var(--success-color);
+  color: white;
+}
+
+.download-button:hover {
+  background: #059669;
+  border-color: #059669;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.reset-button:hover {
+  background: var(--bg-hover);
+  border-color: var(--border-hover);
+  transform: translateY(-1px);
+}
+
+/* Markdown Preview - Obsidian Editor Style */
+.markdown-preview {
+  background: var(--bg-tertiary);
+  padding: 2rem;
+  border-radius: 6px;
+  line-height: 1.7;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.markdown-preview h1 {
+  font-size: 2rem;
+  margin-bottom: 1.25rem;
+  margin-top: 0;
+  color: var(--text-primary);
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.75rem;
+}
+
+.markdown-preview h2 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 0.875rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  letter-spacing: -0.3px;
+}
+
+.markdown-preview h3 {
+  font-size: 1.25rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.625rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.markdown-preview h4 {
+  font-size: 1.1rem;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.markdown-preview p {
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+}
+
+.markdown-preview ul,
+.markdown-preview ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+}
+
+.markdown-preview li {
+  margin-bottom: 0.375rem;
+  padding-left: 0.25rem;
+}
+
+.markdown-preview li::marker {
+  color: var(--accent-purple);
+}
+
+.markdown-preview strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.markdown-preview em {
+  color: var(--text-primary);
+}
+
+.markdown-preview a {
+  color: var(--accent-purple);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.markdown-preview a:hover {
+  border-bottom-color: var(--accent-purple);
+}
+
+.markdown-preview code {
+  background: var(--bg-elevated);
+  color: #c792ea;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.875em;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  border: 1px solid var(--border-color);
+}
+
+.markdown-preview pre {
+  background: var(--bg-elevated);
+  padding: 1rem 1.25rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border-color);
+}
+
+.markdown-preview pre code {
+  background: transparent;
+  padding: 0;
+  border: none;
+  color: var(--text-primary);
+}
+
+.markdown-preview blockquote {
+  border-left: 3px solid var(--accent-purple);
+  padding-left: 1rem;
+  margin-left: 0;
+  margin-bottom: 1rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.markdown-preview hr {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 2rem 0;
+}
+
+/* Raw Transcription - Collapsible */
+.raw-transcription {
+  margin-top: 2rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--bg-tertiary);
+  overflow: hidden;
+}
+
+.raw-transcription summary {
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--text-secondary);
+  padding: 1rem 1.25rem;
+  user-select: none;
+  transition: all 0.2s ease;
+  background: var(--bg-tertiary);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.raw-transcription summary::-webkit-details-marker {
+  display: none;
+}
+
+.raw-transcription summary::before {
+  content: '▶';
+  font-size: 0.75rem;
+  transition: transform 0.2s ease;
+  color: var(--text-muted);
+}
+
+.raw-transcription[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.raw-transcription summary:hover {
+  background: var(--bg-hover);
+  color: var(--accent-purple);
+}
+
+.raw-text {
+  padding: 1.25rem;
+  background: var(--bg-elevated);
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  white-space: pre-wrap;
+  border-top: 1px solid var(--border-color);
+}
+
+.footer {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .app {
+    padding: 1rem 0.5rem;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .result-header {
+    flex-direction: column;
+  }
+
+  .result-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .result-actions {
+    width: 100%;
+  }
+
+  .download-button,
+  .reset-button {
+    flex: 1;
+  }
+
+  .markdown-preview {
+    padding: 1.25rem;
+  }
+
+  .drop-zone {
+    padding: 2rem 1rem;
+  }
+}
+
+/* Smooth transitions */
+* {
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
