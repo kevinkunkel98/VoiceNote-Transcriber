@@ -69,12 +69,12 @@ Example response format:
         response = requests.post(
             f"{OLLAMA_URL}/api/generate",
             json={
-                "model": "qwen2.5:7b",
+                "model": "qwen2.5:32b",
                 "prompt": prompt,
                 "stream": False,
                 "format": "json"
             },
-            timeout=120
+            timeout=180
         )
 
         if response.status_code != 200:
