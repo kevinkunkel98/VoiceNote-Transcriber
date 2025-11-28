@@ -43,17 +43,20 @@ def structure_with_ollama(transcription: str) -> dict:
     prompt = f"""You are a helpful assistant that converts voice note transcriptions into well-structured markdown documents.
 
 Given the following transcription, please:
-1. Create a clear, descriptive title for the content
-2. Structure the content into a well-formatted markdown document with appropriate headings, bullet points, and sections
-3. Fix any grammar or punctuation issues
-4. Make it readable and professional
+1. Detect the language of the transcription
+2. Create a clear, descriptive title for the content IN THE SAME LANGUAGE as the transcription
+3. Structure the content into a well-formatted markdown document with appropriate headings, bullet points, and sections IN THE SAME LANGUAGE as the transcription
+4. Fix any grammar or punctuation issues while maintaining the original language
+5. Make it readable and professional
+
+IMPORTANT: The output (title and content) must be in the SAME LANGUAGE as the input transcription.
 
 Transcription:
 {transcription}
 
 Please respond with a JSON object containing:
-- "title": A concise, descriptive title (without markdown formatting)
-- "content": The full formatted markdown content (including the title as # heading)
+- "title": A concise, descriptive title in the same language as the transcription (without markdown formatting)
+- "content": The full formatted markdown content in the same language as the transcription (including the title as # heading)
 
 Example response format:
 {{
