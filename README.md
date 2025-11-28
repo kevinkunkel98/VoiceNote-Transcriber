@@ -154,7 +154,7 @@ The backend uses the `base` Whisper model by default (balanced speed/accuracy).
 
 To change models, edit `backend/main.py`:
 ```python
-model = whisper.load_model("base")  # Options: tiny, base, small, medium, large
+model = whisper.load_model("medium")  # Options: tiny, base, small, medium, large
 ```
 
 Model comparison:

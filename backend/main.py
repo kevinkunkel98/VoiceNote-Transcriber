@@ -66,7 +66,7 @@ Example response format:
         response = requests.post(
             f"{OLLAMA_URL}/api/generate",
             json={
-                "model": "llama3.2",
+                "model": "qwen2.5:7b",
                 "prompt": prompt,
                 "stream": False,
                 "format": "json"
