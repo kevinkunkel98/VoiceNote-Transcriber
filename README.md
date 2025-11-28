@@ -15,7 +15,7 @@ Transform your voice notes into beautifully structured markdown documents using 
 
 - **Frontend**: React 18 + Vite with a beautiful gradient UI
 - **Backend**: FastAPI with OpenAI Whisper for transcription
-- **AI Structuring**: Ollama with Llama 3.2 for intelligent text formatting
+- **AI Structuring**: Ollama with Qwen 2.5 (7B) for intelligent text formatting
 - **Deployment**: Docker Compose for easy orchestration
 
 ## Prerequisites
@@ -37,15 +37,15 @@ Transform your voice notes into beautifully structured markdown documents using 
    ```
 
    This single command will:
-   - Pull and start Ollama
-   - Download the Llama 3.2 model
    - Build and start the FastAPI backend with Whisper
    - Build and start the React frontend
    - Set up all networking between services
 
-3. **Wait for initialization** (first time only):
-   - The Llama 3.2 model download takes 5-10 minutes
-   - Monitor progress with: `docker-compose logs -f ollama-init`
+3. **Pull the Ollama model** (first time only):
+   ```bash
+   ollama pull qwen2.5:7b
+   ```
+   - The Qwen 2.5 (7B) model download takes 10-15 minutes
    - Backend initialization takes 2-3 minutes (downloads Whisper model)
 
 4. **Access the application**:
@@ -178,16 +178,16 @@ View logs:
 docker-compose logs -f
 ```
 
-### Ollama model not downloading
+### Ollama model not available
 
-Check Ollama init logs:
+Check if the model is installed:
 ```bash
-docker-compose logs ollama-init
+ollama list
 ```
 
 Manually pull the model:
 ```bash
-docker-compose exec ollama ollama pull llama3.2
+ollama pull qwen2.5:7b
 ```
 
 ### Backend fails to start
@@ -202,7 +202,8 @@ docker stats
 1. Check file format is supported
 2. Ensure file is not corrupted
 3. Check backend logs: `docker-compose logs backend`
-4. Verify Ollama is healthy: `curl http://localhost:11434/api/tags`
+4. Verify Ollama is healthy and has the model: `curl http://localhost:11434/api/tags`
+5. Ensure the qwen2.5:7b model is available: `ollama list`
 
 ### Frontend can't connect to backend
 
@@ -235,7 +236,7 @@ npm run dev
 Install from https://ollama.ai and run:
 ```bash
 ollama serve
-ollama pull llama3.2
+ollama pull qwen2.5:7b
 ```
 
 ### Building images manually
